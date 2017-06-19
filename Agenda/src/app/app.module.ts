@@ -1,20 +1,24 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { ListaContactosComponent } from './lista-contactos/lista-contactos.component';
 import { ContactosService } from './contactos.service';
+import { FormularioAltaComponent } from './formulario-alta/formulario-alta.component';
 
 @NgModule({
   // Por ahora sólo tenemos un componente, Aquí debemos indicar los componentes,
   // directivas y pipes que generemos en nuestra app
   declarations: [
     AppComponent,
-    ListaContactosComponent
+    ListaContactosComponent,
+    FormularioAltaComponent
   ],
   // En imports indicamos modulos de los cuales dependemos
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   // En providers indicamos los proveedores de todas aquellas piezas
   // que sean susceptibles de ser inyectadas como dependencias

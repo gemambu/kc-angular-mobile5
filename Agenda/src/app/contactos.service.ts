@@ -28,4 +28,8 @@ export class ContactosService {
     let position = this._contactos.indexOf(contacto);
     this._contactos.splice(position, 1);
   }
+
+  agregarContacto(contacto: string): void {
+    this._contactos.push(contacto);
+  }
 }
