@@ -1,0 +1,15 @@
+<ul>
+  <!-- Con la directiva 'NgFor' iteramos sobre una coleccion.
+  En cada iteraccion se referencia en la variable indicada el
+  elemento iterado. Además esta directiva replica el elemento HTML sobre el cual se usa -->
+  <li 
+  *ngFor="let contacto of datos"
+  [class.rojo] = "esGatesWozniak(contacto)"
+  [style.fontSize] = "esCookMusk(contacto)">
+    {{ contacto }}
+    <!-- para hacer suscripciones a eventos, envolvemos entre parentesis el nobre del mismo.
+    Tebemos que asociar además un manejador. Si queremos acceder a los datos de un evento, tenemos que pasar como parámetro al majeador
+    el objeto $event-->
+    <button (click)="notificarEliminacion(contacto)">Eliminar</button>
+  </li>
+</ul>
