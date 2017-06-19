@@ -20,15 +20,5 @@ export class ListaContactosComponent  {
     this.clickEnEliminar.emit(contactoABorrar);
   }
 
-  esGatesWozniak(datoAEvaluar: string): boolean{
-    return datoAEvaluar.indexOf('Gates') > -1 || datoAEvaluar.indexOf('Wozniak') > -1
-  }
-
-  esCookMusk(datoAEvaluar: string): string {
-    return datoAEvaluar.indexOf('Cook') > -1 
-    || datoAEvaluar.indexOf('Musk') > -1  
-    || datoAEvaluar.indexOf('Pichai') > -1 
-    ? '32px' : '14px'
-  }
 
 }
