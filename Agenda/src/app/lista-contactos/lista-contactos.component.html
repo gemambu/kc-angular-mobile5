@@ -4,7 +4,7 @@
   elemento iterado. Además esta directiva replica el elemento HTML sobre el cual se usa -->
   <li 
   *ngFor="let contacto of datos">
-    {{ contacto }}
+    {{ contacto.nombre }}
     <!-- para hacer suscripciones a eventos, envolvemos entre parentesis el nobre del mismo.
     Tebemos que asociar además un manejador. Si queremos acceder a los datos de un evento, tenemos que pasar como parámetro al majeador
     el objeto $event-->

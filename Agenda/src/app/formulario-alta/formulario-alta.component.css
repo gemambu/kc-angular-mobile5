@@ -1,0 +1,16 @@
+
+/* con las clases ngtouched y ngvalid seleccionamos los eltos
+que se han visitado per se han informado de forma incorrecta o no se han informado*/
+input.ng-touched.ng-invalid {
+    border: 1px solid red;
+}
+
+/* con las clases g touched y ngvalid seleccionamos los eltos
+que se han visitado y ademas se han informado correctamente*/
+input.ng-touched.ng-valid {
+    border: 1px solid green;
+}
+
+.mensaje-error {
+    color: red;
+}
