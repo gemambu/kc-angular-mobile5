@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Contacto } from './contacto';
+import { Http, Response } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
 
 // Un servicio es una clase decorada con 'Injectable'. Este decorador 
 // no necesita que le indiquemos ningún metadato. Es importante
@@ -10,7 +13,8 @@ export class ContactosService {
 
   private _contactos : Contacto[];
 
-  constructor(){
+  constructor(private _http: Http){
+
     this._contactos = [
       new Contacto('Tim', 'Cook'),
       new Contacto('Bill','Gates'),
@@ -20,8 +24,21 @@ export class ContactosService {
     ];
   }
 
-  obtenerContactos(): Contacto[]{
-    return this._contactos;  
+  obtenerContactos(): Observable<Contacto[]>{
+    // hacemos la petición http
+    return this._http
+                .get('http://localhost:3004/contactos')
+                .map((respuesta: Response) => {
+                  
+                  let contactos: Contacto[];
+                  let contactosJson: any[] = respuesta.json();
+                  
+                  contactosJson.forEach((contactoJson: any) => {
+                    contactos.push(new Contacto(contactoJson.nombre));
+                  });
+
+                  return contactos;
+                });
   };
 
   agregarContacto(contacto: Contacto): void {
