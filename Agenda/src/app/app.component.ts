@@ -17,7 +17,7 @@ import { Observable } from 'rxjs/Observable';
 })
 export class AppComponent implements OnInit {
 
-  contactos: Observable<Contacto[]>;
+  contactos$: Observable<Contacto[]>;
 
 // para hacer una inyección de dependencias necesitamos sí o si 
 // hacerlo en el constructor de una clase. Tenemos que
@@ -29,18 +29,22 @@ export class AppComponent implements OnInit {
 
   ngOnInit() : void{
     // en el hook 'OnInit' inicializamos los datos del componente
-    this.contactos = this._contactosService.obtenerContactos();
+    this.contactos$ = this._contactosService.obtenerContactos();
     
   }
   
   eliminarContacto(contacto: Contacto){
     this._contactosService.eliminarContacto(contacto);
-    this.contactos = this._contactosService.obtenerContactos();
+    this.contactos$ = this._contactosService.obtenerContactos();
   }
 
   guardarContacto(contacto: Contacto){
-    this._contactosService.agregarContacto(contacto);
-    this.contactos = this._contactosService.obtenerContactos();
+    this._contactosService
+          .agregarContacto(contacto)
+          .subscribe(() => {
+            this.contactos$ = this._contactosService.obtenerContactos();
+          });
+    
   }
 
 }

@@ -11,38 +11,37 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class ContactosService {
 
-  private _contactos : Contacto[];
-
   constructor(private _http: Http){
-
-    this._contactos = [
-      new Contacto('Tim', 'Cook'),
-      new Contacto('Bill','Gates'),
-      new Contacto('Elon','Musk'),
-      new Contacto('Steve','Wozniak'),
-      new Contacto('Sundar','Pichai')
-    ];
   }
 
   obtenerContactos(): Observable<Contacto[]>{
-    // hacemos la petición http
+    
+    
+  // El cliente HTTP trabaja con objetos 'Response'. Este objeto tiene datos relacionados
+  // con la respuesta del servidor: cabeceras, status, body, etc.
+  // Nunc debemos subir este objeto a la capa de arriba (componentes). Por tanto debemos transformar este objeto
+  // en el que realmente nos ha pedido el componente, que en este caso es 'Contacto[]'. Para hacer esta operación
+  // nos apoyamos en la función 'map' que es un operador de 
+  // los objetos 'Observables'. Este operador transforma un 'Observable' en otro.
     return this._http
                 .get('http://localhost:3004/contactos')
                 .map((respuesta: Response) => {
-                  
-                  let contactos: Contacto[];
-                  let contactosJson: any[] = respuesta.json();
-                  
-                  contactosJson.forEach((contactoJson: any) => {
-                    contactos.push(new Contacto(contactoJson.nombre));
-                  });
 
-                  return contactos;
+                  return Contacto.nuevaColecciónDesdeJson(respuesta.json());
                 });
   };
 
-  agregarContacto(contacto: Contacto): void {
-    this._contactos.push(contacto);
+  agregarContacto(contacto: Contacto): Observable<Contacto> {
+    
+    // En aquellas peticiones HTTP que envien datos a servidor (POST, PUT, PATCH), debemos
+    // indicar los datos como segundo parámetro de la funcion correspondiente.
+    // En este caso estamos enviando el contacto a crear en el cuerpo de la petición 
+    // 'post'.
+    return this._http
+                .post('http://localhost:3004/contactos', contacto)
+                .map((respuesta: Response) => {
+                  return Contacto.nuevoDesdeJson(respuesta.json());
+                });
   }
 
   eliminarContacto(contacto: Contacto): void {
@@ -50,4 +49,6 @@ export class ContactosService {
     //let position = this._contactos.indexOf(contacto);
     //this._contactos.splice(position, 1);
   }
+
+
 }
