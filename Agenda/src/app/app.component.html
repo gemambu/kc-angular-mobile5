@@ -1,8 +1,23 @@
 <div class="container">
-
+<!-- titulo -->
   <header>
     <h1>Mi Agenda</h1>
   </header>
+  
+  <!-- barra de navegacion -->
+  <nav>
+    <ul>
+      <li>
+        <a RouterLink="/mis-contactos">Mis contactos</a>
+      </li>
+      <li> 
+        <a RouterLink="/nuevo-contacto">Nuevo contacto</a>
+      </li>
+    </ul>
+  </nav>
+
+<!-- zona dinamica donde cargamos las distintas secciones -->
+  <router-outlet></router-outlet>
 
   <formulario-alta
     (clickEnGuardar)="guardarContacto($event)">

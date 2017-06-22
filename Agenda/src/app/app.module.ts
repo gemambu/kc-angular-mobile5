@@ -7,6 +7,9 @@ import { AppComponent } from './app.component';
 import { ListaContactosComponent } from './lista-contactos/lista-contactos.component';
 import { ContactosService } from './contactos.service';
 import { FormularioAltaComponent } from './formulario-alta/formulario-alta.component';
+import { AppRoutingModule } from './app-routing/app-routing.module';
+import { MisContactosComponent } from './mis-contactos/mis-contactos.component';
+import { NuevoContactoComponent } from './nuevo-contacto/nuevo-contacto.component'
 
 @NgModule({
   // Por ahora sólo tenemos un componente, Aquí debemos indicar los componentes,
@@ -14,13 +17,16 @@ import { FormularioAltaComponent } from './formulario-alta/formulario-alta.compo
   declarations: [
     AppComponent,
     ListaContactosComponent,
-    FormularioAltaComponent
+    FormularioAltaComponent,
+    MisContactosComponent,
+    NuevoContactoComponent
   ],
   // En imports indicamos modulos de los cuales dependemos
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    AppRoutingModule
   ],
   // En providers indicamos los proveedores de todas aquellas piezas
   // que sean susceptibles de ser inyectadas como dependencias

@@ -3,6 +3,7 @@ import { Contacto } from './contacto';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+import { environment } from '../environments/environment'
 
 // Un servicio es una clase decorada con 'Injectable'. Este decorador 
 // no necesita que le indiquemos ningún metadato. Es importante
@@ -24,7 +25,7 @@ export class ContactosService {
   // nos apoyamos en la función 'map' que es un operador de 
   // los objetos 'Observables'. Este operador transforma un 'Observable' en otro.
     return this._http
-                .get('http://localhost:3004/contactos')
+                .get(`${environment.apiUri}/contactos`)
                 .map((respuesta: Response) => {
 
                   return Contacto.nuevaColecciónDesdeJson(respuesta.json());
@@ -38,7 +39,7 @@ export class ContactosService {
     // En este caso estamos enviando el contacto a crear en el cuerpo de la petición 
     // 'post'.
     return this._http
-                .post('http://localhost:3004/contactos', contacto)
+                .post(`${environment.apiUri}/contactos`, contacto)
                 .map((respuesta: Response) => {
                   return Contacto.nuevoDesdeJson(respuesta.json());
                 });
