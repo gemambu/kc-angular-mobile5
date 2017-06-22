@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ContactosService } from './contactos.service';
-import { Contacto } from './contacto';
-import { Observable } from 'rxjs/Observable';
+import { Component } from '@angular/core';
+
 
 @Component({ 
   // En selector indicamos el elemento HTML donde se instanciará 
@@ -15,36 +13,5 @@ import { Observable } from 'rxjs/Observable';
   // contienen los estilos que afectan a este componente
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
-
-  contactos$: Observable<Contacto[]>;
-
-// para hacer una inyección de dependencias necesitamos sí o si 
-// hacerlo en el constructor de una clase. Tenemos que
-// indicar un parámetro con un modificador de acceso (obligatorio). Además tenemos que anotar su tipo que
-// no es otro que el servicio a inyectar.
-  constructor(private _contactosService: ContactosService){
-    
-  }
-
-  ngOnInit() : void{
-    // en el hook 'OnInit' inicializamos los datos del componente
-    this.contactos$ = this._contactosService.obtenerContactos();
-    
-  }
-  
-  eliminarContacto(contacto: Contacto){
-    this._contactosService.eliminarContacto(contacto);
-    this.contactos$ = this._contactosService.obtenerContactos();
-  }
-
-  guardarContacto(contacto: Contacto){
-    this._contactosService
-          .agregarContacto(contacto)
-          .subscribe(() => {
-            this.contactos$ = this._contactosService.obtenerContactos();
-          });
-    
-  }
-
+export class AppComponent {
 }

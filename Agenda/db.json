@@ -26,6 +26,33 @@
       "facebook": "elon.musk",
       "twitter": "@elonmusk",
       "id": 3
+    },
+    {
+      "nombre": "espinete",
+      "apellidos": "",
+      "movil": "",
+      "email": "",
+      "facebook": "",
+      "twitter": "",
+      "id": 4
+    },
+    {
+      "nombre": "bob esponja",
+      "apellidos": "",
+      "movil": "",
+      "email": "",
+      "facebook": "",
+      "twitter": "",
+      "id": 5
+    },
+    {
+      "nombre": "patricio",
+      "apellidos": "estrella",
+      "movil": "",
+      "email": "",
+      "facebook": "",
+      "twitter": "",
+      "id": 6
     }
   ]
 }
