@@ -9,7 +9,8 @@ import { ContactosService } from './contactos.service';
 import { FormularioAltaComponent } from './formulario-alta/formulario-alta.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { MisContactosComponent } from './mis-contactos/mis-contactos.component';
-import { NuevoContactoComponent } from './nuevo-contacto/nuevo-contacto.component'
+import { NuevoContactoComponent } from './nuevo-contacto/nuevo-contacto.component';
+import { OrdenContactosPipe } from './orden-contactos.pipe'
 
 @NgModule({
   // Por ahora sólo tenemos un componente, Aquí debemos indicar los componentes,
@@ -19,7 +20,8 @@ import { NuevoContactoComponent } from './nuevo-contacto/nuevo-contacto.componen
     ListaContactosComponent,
     FormularioAltaComponent,
     MisContactosComponent,
-    NuevoContactoComponent
+    NuevoContactoComponent,
+    OrdenContactosPipe
   ],
   // En imports indicamos modulos de los cuales dependemos
   imports: [

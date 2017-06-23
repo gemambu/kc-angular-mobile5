@@ -3,7 +3,7 @@
   En cada iteraccion se referencia en la variable indicada el
   elemento iterado. Además esta directiva replica el elemento HTML sobre el cual se usa -->
   <li 
-  *ngFor="let contacto of datos">
+  *ngFor="let contacto of datos | ordenContactos">
   <!--  {{ contacto.nombre }} {{ contacto.apellidos }} -->
     {{ obtenerNombreCompleto(contacto) }}
     <!-- para hacer suscripciones a eventos, envolvemos entre parentesis el nobre del mismo.
